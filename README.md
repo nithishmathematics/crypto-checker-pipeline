@@ -80,5 +80,6 @@ docker build -t crypto-checker .
 docker run -d -p 5000:5000 crypto-checker
 Visit: \`[http://localhost](http://localhost):
 
-Check the report for complete Detail
+Check the report for complete Detail That is Task.pdf
+
 
