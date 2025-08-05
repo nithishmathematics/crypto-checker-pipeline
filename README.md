@@ -79,3 +79,6 @@ docker build -t crypto-checker .
 2. Run Docker Container
 docker run -d -p 5000:5000 crypto-checker
 Visit: \`[http://localhost](http://localhost):
+
+Check the report for complete Detail
+
