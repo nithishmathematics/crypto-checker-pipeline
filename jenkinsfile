@@ -1,0 +1,33 @@
+pipeline {
+    agent any
+
+    stages {
+        stage('Clone Repo') {
+            steps {
+                git branch: 'main',
+                    url: 'https://github.com/nithishmathematics/crypto-checker-pipeline.git'
+            }
+        }
+
+        stage('Build Docker Image') {
+            steps {
+                sh 'docker build -t crypto-checker-app .'
+            }
+        }
+
+        stage('Stop & Remove Old Container') {
+            steps {
+                sh '''
+                    docker stop crypto-checker-app || true
+                    docker rm crypto-checker-app || true
+                '''
+            }
+        }
+
+        stage('Run New Container') {
+            steps {
+                sh 'docker run -d -p 5000:5000 --name crypto-checker-app crypto-checker-app'
+            }
+        }
+    }
+}
